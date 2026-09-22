@@ -138,7 +138,7 @@ sistema-clientes-react
 
 ## Integrantes
 
-- Equipe Aurora Tech (dupla)
+- Rafaela Portugal e Rayssa AraújoS
 
 ## Captura de tela
 
