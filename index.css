@@ -1,0 +1,239 @@
+:root {
+  --fundo: #f4efe4;
+  --fundo-escuro: #14213d;
+  --papel: #fffdf8;
+  --linha: #e4d9c5;
+  --texto: #1c1914;
+  --texto-suave: #5c5346;
+  --destaque: #c45c26;
+  --destaque-escuro: #9d4316;
+  --verde: #2f6f4e;
+  --sombra: 0 18px 40px rgba(20, 33, 61, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(196, 92, 38, 0.16), transparent 28%),
+    linear-gradient(180deg, #f7f1e6 0%, #efe6d6 100%);
+  color: var(--texto);
+}
+
+.pagina {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 40px 0 72px;
+}
+
+.titulo {
+  background: var(--fundo-escuro);
+  color: #f7f1e6;
+  border-radius: 28px;
+  padding: 40px 36px;
+  margin-bottom: 28px;
+  box-shadow: var(--sombra);
+}
+
+.titulo__marca {
+  display: inline-block;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  color: #e7c7a6;
+  margin-bottom: 12px;
+}
+
+.titulo h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  line-height: 1.1;
+  max-width: 16ch;
+}
+
+.titulo__descricao {
+  margin-top: 16px;
+  max-width: 52ch;
+  color: #d7d0c4;
+  font-size: 1.05rem;
+}
+
+.alerta {
+  border-radius: 14px;
+  padding: 12px 16px;
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+
+.alerta--ok {
+  background: #e5f4ea;
+  color: var(--verde);
+}
+
+.alerta--erro {
+  background: #fde8e4;
+  color: #9b2c1e;
+}
+
+.secao {
+  margin-top: 28px;
+}
+
+.secao__cabecalho {
+  margin-bottom: 16px;
+}
+
+.secao__cabecalho h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.8rem;
+}
+
+.secao__cabecalho p {
+  color: var(--texto-suave);
+}
+
+.grade {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.formulario {
+  background: var(--papel);
+  border: 1px solid var(--linha);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: var(--sombra);
+}
+
+.formulario h2 {
+  font-family: 'Fraunces', serif;
+  margin-bottom: 6px;
+}
+
+.formulario__ajuda {
+  color: var(--texto-suave);
+  margin-bottom: 18px;
+  font-size: 0.95rem;
+}
+
+.formulario label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.formulario input {
+  width: 100%;
+  margin-bottom: 14px;
+  border: 1px solid #d8cbb4;
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font: inherit;
+  color: var(--texto);
+}
+
+.formulario input:focus {
+  outline: 2px solid #c45c26;
+  border-color: transparent;
+}
+
+.formulario button {
+  width: 100%;
+  border: 0;
+  border-radius: 999px;
+  padding: 13px 16px;
+  background: var(--destaque);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.formulario button:hover:not(:disabled) {
+  background: var(--destaque-escuro);
+}
+
+.formulario button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.lista__vazia {
+  background: var(--papel);
+  border: 1px dashed var(--linha);
+  border-radius: 18px;
+  padding: 24px;
+  color: var(--texto-suave);
+}
+
+.card {
+  background: var(--papel);
+  border: 1px solid var(--linha);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: var(--sombra);
+}
+
+.card h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.25rem;
+}
+
+.card__tag {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #f3e2d2;
+  color: var(--destaque-escuro);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.card__preco {
+  margin-top: 12px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--verde);
+}
+
+.card--cliente p {
+  margin-top: 10px;
+  color: var(--texto);
+}
+
+.card--cliente span {
+  display: block;
+  color: var(--texto-suave);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 860px) {
+  .grade {
+    grid-template-columns: 1fr;
+  }
+}
