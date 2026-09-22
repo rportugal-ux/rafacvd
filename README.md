@@ -1,17 +1,20 @@
 # Sistema de Clientes React
 
-Aplicacao web da Aurora Tech para apresentar o catalogo de produtos e cadastrar clientes da loja.
+Aplicação web desenvolvida para a Aurora Tech com o objetivo de apresentar um catálogo de produtos e realizar o cadastro de clientes utilizando React, API, Back-End e Banco de Dados.
 
 ## Problema solucionado
 
-A empresa precisava de um painel simples para:
+A empresa precisava de um sistema simples para:
 
 - visualizar produtos cadastrados;
-- adicionar novos produtos no catalogo;
-- consultar clientes ja registrados;
-- cadastrar novos clientes com persistencia em banco de dados.
+- adicionar novos produtos ao catálogo;
+- consultar clientes já cadastrados;
+- cadastrar novos clientes;
+- armazenar os dados dos clientes em um banco de dados.
 
-Os produtos ficam apenas no State do React. Os clientes sao enviados para a API, processados pelo Back-End e gravados no Banco de Dados SQLite.
+Os produtos são armazenados no State do React. Os clientes são enviados para uma API, processados pelo Back-End e gravados no banco de dados SQLite.
+
+---
 
 ## Tecnologias utilizadas
 
@@ -20,27 +23,42 @@ Os produtos ficam apenas no State do React. Os clientes sao enviados para a API,
 - Vite
 - React
 - JSX
-- Componentes, Props, State e Eventos
-- `map()`
 - JavaScript
+- Componentes
+- Props
+- State
+- Eventos
+- map()
 - CSS
 - Express
-- SQLite (`better-sqlite3`)
-- Git / GitHub
+- SQLite
+- better-sqlite3
+- Git
+- GitHub
+
+---
 
 ## Como executar o Front-End
 
+Abra o terminal na pasta Frontend:
+
 ```bash
-cd frontend
+cd Frontend
 npm install
 npm run dev
 ```
 
-A aplicacao sobe em `http://localhost:5173`.
+A aplicação será executada em:
 
-O Vite encaminha as requisicoes de `/api` para o Back-End em `http://localhost:3001`.
+```text
+http://localhost:5173
+```
+
+---
 
 ## Como executar o Back-End
+
+Abra outro terminal na pasta backend:
 
 ```bash
 cd backend
@@ -48,23 +66,22 @@ npm install
 npm start
 ```
 
-A API sobe em `http://localhost:3001`.
+A API será executada em:
 
-Para iniciar os dois servicos juntos:
-
-```bash
-chmod +x start.sh
-./start.sh
+```text
+http://localhost:3001
 ```
+
+---
 
 ## Rotas da API
 
-| Metodo | Rota | Descricao |
-| --- | --- | --- |
-| GET | `/api/clientes` | Lista todos os clientes cadastrados |
-| POST | `/api/clientes` | Cadastra um novo cliente |
+| Método | Rota | Descrição |
+|----------|-----------------|-----------------------------------|
+| GET | /api/clientes | Lista todos os clientes |
+| POST | /api/clientes | Cadastra um novo cliente |
 
-Exemplo de corpo para `POST /api/clientes`:
+### Exemplo de JSON para cadastro
 
 ```json
 {
@@ -74,74 +91,273 @@ Exemplo de corpo para `POST /api/clientes`:
 }
 ```
 
-Teste sugerido no Postman ou equivalente:
+---
 
-1. `GET http://localhost:3001/api/clientes`
-2. `POST http://localhost:3001/api/clientes` com o JSON acima
-3. Confirme o novo registro no retorno do GET e no arquivo `database/clientes.db`
+## Testes no Postman
+
+### GET
+
+```text
+http://localhost:3001/api/clientes
+```
+
+### POST
+
+```text
+http://localhost:3001/api/clientes
+```
+
+Body:
+
+```json
+{
+  "nome": "Ana Souza",
+  "email": "ana@email.com",
+  "telefone": "(11) 98888-1234"
+}
+```
+
+Após o cadastro, o novo cliente aparecerá na aplicação.
+
+---
 
 ## Estrutura do Banco de Dados
 
-Arquivo: `database/clientes.db` (SQLite)
+Banco utilizado:
 
-Tabela `clientes`:
+```text
+Banco de dados/clientes.db
+```
 
-| Coluna | Tipo | Descricao |
-| --- | --- | --- |
-| id | INTEGER | Chave primaria autoincremento |
-| nome | TEXT | Nome do cliente |
-| email | TEXT | E-mail do cliente |
-| telefone | TEXT | Telefone do cliente |
-| criado_em | TEXT | Data e hora do cadastro |
+Tabela:
 
-O schema tambem esta em `database/schema.sql`.
+```text
+clientes
+```
+
+Campos:
+
+| Campo | Tipo |
+|---------|---------|
+| id | INTEGER |
+| nome | TEXT |
+| email | TEXT |
+| telefone | TEXT |
+| criado_em | TEXT |
+
+Arquivos:
+
+```text
+Banco de dados/schema.sql
+Banco de dados/seed.sql
+```
+
+---
 
 ## Funcionalidades
 
-- Catalogo de produtos com 3 itens iniciais
-- Cadastro de produtos no State do React
-- Listagem de produtos com `map()` e o componente `Produto`
-- Listagem de clientes com `map()` e o componente `Cliente`
-- Formulario controlado para cadastro de clientes
-- Comunicacao com a API usando `fetch()`
-- Persistencia dos clientes no Banco de Dados
-- Identidade visual propria em CSS
+- Catálogo de produtos;
+- Cadastro de produtos;
+- Produtos armazenados no State;
+- Listagem de produtos utilizando map();
+- Componente Produto;
+- Componente Titulo;
+- Listagem de clientes;
+- Componente Cliente;
+- Formulário de cadastro;
+- Componente FormularioCliente;
+- Utilização de Props;
+- Utilização de State;
+- Eventos;
+- Comunicação com API usando fetch();
+- Requisição GET;
+- Requisição POST;
+- Persistência dos dados no banco;
+- Atualização automática da lista;
+- Estilização própria com CSS.
 
-## Estrutura do projeto
+---
+
+## Estrutura do Projeto
 
 ```text
-sistema-clientes-react
-├── frontend
-│   └── src
-│       ├── components
-│       │   ├── Titulo.jsx
-│       │   ├── Produto.jsx
-│       │   ├── FormularioProduto.jsx
-│       │   ├── Cliente.jsx
-│       │   └── FormularioCliente.jsx
-│       ├── App.jsx
-│       ├── index.css
-│       └── main.jsx
-├── backend
-│   ├── server.js
+sistema-clientes-react/
+│
+├── backend/
 │   ├── database.js
-│   └── package.json
-├── database
+│   ├── server.js
+│   ├── package.json
+│   └── package-lock.json
+│
+├── Banco de dados/
+│   ├── clientes.db
 │   ├── schema.sql
 │   ├── seed.sql
-│   └── clientes.db
-├── docs
+│
+├── Docs/
 │   └── aplicacao.png
-├── start.sh
-└── README.md
+│
+├── Frontend/
+│   ├── src/
+│   │   ├── Ativos/
+│   │   ├── Componentes/
+│   │   │   ├── Titulo.jsx
+│   │   │   ├── Produto.jsx
+│   │   │   ├── FormularioProduto.jsx
+│   │   │   ├── Cliente.jsx
+│   │   │   └── FormularioCliente.jsx
+│   │   │
+│   │   ├── App.jsx
+│   │   ├── App.css
+│   │   ├── index.css
+│   │   └── main.jsx
+│   │
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── vite.config.js
+│   └── index.html
+│
+├── README.md
+└── start.sh
 ```
+
+---
+
+## Fluxo da Aplicação
+
+### Cadastro
+
+```text
+USUÁRIO
+   ↓
+FORMULÁRIO REACT
+   ↓
+STATE
+   ↓
+fetch()
+   ↓
+POST
+   ↓
+API
+   ↓
+BACK-END
+   ↓
+BANCO DE DADOS
+```
+
+### Retorno dos dados
+
+```text
+BANCO DE DADOS
+   ↓
+BACK-END
+   ↓
+API
+   ↓
+fetch()
+   ↓
+STATE
+   ↓
+REACT
+   ↓
+map()
+   ↓
+COMPONENTE CLIENTE
+   ↓
+TELA
+```
+
+---
+
+## Componentes React
+
+### Titulo.jsx
+
+Exibe o nome da aplicação e uma descrição.
+
+### Produto.jsx
+
+Recebe por Props:
+
+- nome;
+- categoria;
+- preço.
+
+### Cliente.jsx
+
+Recebe por Props:
+
+- nome;
+- e-mail;
+- telefone.
+
+### FormularioCliente.jsx
+
+Possui:
+
+- Nome;
+- E-mail;
+- Telefone;
+- Botão de cadastro.
+
+Os dados são controlados pelo State.
+
+---
+
+## Requisitos atendidos
+
+✅ React  
+✅ JSX  
+✅ Componentes  
+✅ Props  
+✅ State  
+✅ Eventos  
+✅ map()  
+✅ CSS  
+✅ fetch()  
+✅ API  
+✅ Back-End  
+✅ Banco de Dados  
+✅ GET  
+✅ POST  
+✅ GitHub  
+✅ README.md
+
+---
+
+## Captura de Tela
+
+A imagem da aplicação está na pasta:
+
+```text
+Docs/aplicacao.png
+```
+
+Para exibir no README:
+
+```markdown
+![Aplicação funcionando](Docs/aplicacao.png)
+```
+
+---
 
 ## Integrantes
 
-- Rafaela Portugal e Taís Millena.
+- Rafaela Portugal
+- Taís Millena
 
-## Captura de tela
+---
 
-Aplicacao em funcionamento, com catalogo de produtos no State do React e clientes carregados da API:
+## GitHub
 
-![Catalogo de Produtos e Gestao de Clientes](docs/aplicacao.png)
+Repositório:
+
+https://github.com/rportugal-ux/rafacvd
+
+---
+
+## Conclusão
+
+O projeto foi desenvolvido utilizando React no Front-End, Express no Back-End e SQLite para armazenamento dos dados.
+
+A aplicação permite visualizar produtos, cadastrar produtos, consultar clientes e cadastrar novos clientes, colocando em prática os conceitos de React, JSX, Componentes, Props, State, Eventos, map(), fetch(), API, Banco de Dados e GitHub.
