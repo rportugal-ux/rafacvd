@@ -138,7 +138,7 @@ sistema-clientes-react
 
 ## Integrantes
 
-- Rafaela Portugal e Tais Millena.
+- Equipe Aurora Tech (dupla)
 
 ## Captura de tela
 
