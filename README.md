@@ -138,7 +138,7 @@ sistema-clientes-react
 
 ## Integrantes
 
-- Rafaela Portugal e Rayssa AraújoS
+- Rafaela Portugal e Tais Millena.
 
 ## Captura de tela
 
